@@ -4,16 +4,20 @@ exports.getAllAccounts = (req, res) => {
   return res.status(200).json({ accounts });
 };
 
-// exports.getByName =  (req, res) => {
-//     const { AccountUserName } = req.params;
-//     console.log(req.params);
+exports.getByName = (req, res) => {
+  const { accountUserName } = req.params;
+  console.log(req.params);
 
-//     //find product
-//     const productFound = products.find((product) => product.id === +productId);
-//     if (!productFound)
-//       return res.status(404).json({ message: "product not found!" });
-//     return res.status(200).json(productFound);
-//   });
+  //find product
+  const accountFound = accounts.find(
+    (account) =>
+      account.username.toUpperCase() === accountUserName.toUpperCase()
+  );
+  console.log(accountFound);
+  if (!accountFound)
+    return res.status(404).json({ message: "account not found!" });
+  else return res.status(200).json(accountFound);
+};
 
 exports.createAccount = (req, res) => {
   const id = accounts[accounts.length - 1].id + 1;
