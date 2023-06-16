@@ -46,3 +46,8 @@ exports.updateAccount = (req, res) => {
   accountFound.funds = req.body.funds ? req.body.funds : accountFound.funds;
   return res.status(200).json(accountFound);
 };
+
+exports.getNameCurrency = (req, res) => {
+  const username = req.params.username;
+  const currency = req.query.currency;
+};
